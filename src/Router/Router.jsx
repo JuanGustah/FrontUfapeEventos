@@ -5,8 +5,8 @@ import {
     Route
 } from 'react-router-dom'
 
-import App from '../App';
 import Api from '../api/api';
+import HomePage from '../pages/homepage/home';
 
 
 const Rotas = () => {
@@ -27,7 +27,7 @@ const Rotas = () => {
         <>
             <Router>
                 <Routes>
-                    <Route exact path="/" element={<App />}/>
+                    <Route exact path="/" element={<HomePage />}/>
                     <Route exact path="/teste" element={"Teste de rota"}/>
                 </Routes>
             </Router>
