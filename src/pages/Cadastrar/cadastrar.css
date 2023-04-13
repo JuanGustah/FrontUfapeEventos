@@ -2,7 +2,40 @@
     margin: 0;
     padding: 0;
 }
-.teste {
+.container-form-cadastro {
     height: 100vh;
-    background-color: red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-cadastro{
+    height: 60%;
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: blanchedalmond;
+    box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+}
+.title{
+    margin: 40px 0 0 0;
+}
+.inputs-container{
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 0;
+}
+.container-opts{
+    flex: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
 }

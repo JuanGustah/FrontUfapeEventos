@@ -82,6 +82,12 @@
     color: white;
     border: 1px transparent;
     margin: 15px 0 0px 0;
+    opacity: 0.8;
+    border-radius: 5px;
+}
+.button-form:hover{
+    background-color: #9A8678;
+    opacity: 1;
 }
 .link{
     color: #9A8678;
