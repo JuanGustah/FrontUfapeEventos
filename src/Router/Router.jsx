@@ -7,6 +7,7 @@ import {
 
 import Api from '../api/api';
 import HomePage from '../pages/homepage/home';
+import Cadastrar from '../pages/Cadastrar/cadastrar';
 
 
 const Rotas = () => {
@@ -28,7 +29,7 @@ const Rotas = () => {
             <Router>
                 <Routes>
                     <Route exact path="/" element={<HomePage />}/>
-                    <Route exact path="/teste" element={"Teste de rota"}/>
+                    <Route exact path="/cadastro" element={<Cadastrar/>}/>
                 </Routes>
             </Router>
         </> 
