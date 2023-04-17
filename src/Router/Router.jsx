@@ -1,4 +1,4 @@
-import React, { useEffect,useState } from 'react';
+import React, { Children, useEffect,useState } from 'react';
 import {
     BrowserRouter as Router,
     Routes,
@@ -8,6 +8,9 @@ import {
 import Api from '../api/api';
 import HomePage from '../pages/homepage/home';
 import Cadastrar from '../pages/Cadastrar/cadastrar';
+import MoreInfos from '../pages/MoreInfos/moreinfos';
+import IndexAdm from '../pages/index/indexadm';
+import IndexUser from '../pages/index/indexuser';
 
 
 const Rotas = () => {
@@ -28,8 +31,20 @@ const Rotas = () => {
         <>
             <Router>
                 <Routes>
+                
                     <Route exact path="/" element={<HomePage />}/>
-                    <Route exact path="/cadastro" element={<Cadastrar/>}/>
+                    <Route exact path="/cadastro" element={<Cadastrar/>}>
+                        <Route path=':typeUser' element={<Cadastrar/>}/>
+                    </Route>
+                    <Route  exact path='/infos' element={<MoreInfos/>}/>
+
+
+                    <Route  exact path='/indexuser' element={<IndexUser />}/>
+
+                
+                    
+                    <Route  exact path='/indexadm' element={<IndexAdm />}/>
+                    <Route  exact path='/indexam/eventos' element={<IndexAdm />}/>
                 </Routes>
             </Router>
         </> 

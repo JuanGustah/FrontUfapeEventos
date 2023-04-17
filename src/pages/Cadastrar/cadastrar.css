@@ -10,13 +10,14 @@
 }
 
 .form-cadastro{
+    color: white;
     height: 60%;
     width: 25%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: blanchedalmond;
+    background-color: black;
     box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.25);
     border-radius: 5px;
 }

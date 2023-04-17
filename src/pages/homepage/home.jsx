@@ -1,14 +1,14 @@
 import React from 'react';
 import "./home.css"
 import {Link} from "react-router-dom"
-
+import Logo from "./../../images/logo.svg"
 
 const HomePage = () => {
     //login e cadastro
     return ( 
         <section className='login-page'>
             <section className='container-logo'>
-
+                <img className='logo' src={Logo} alt="" />
             </section>
             <section className='container-form'>
                 <div className='subcontainer-form'>
