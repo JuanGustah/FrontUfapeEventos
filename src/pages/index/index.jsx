@@ -4,16 +4,21 @@ import logo from "./../../images/logo.svg"
 import { useParams } from 'react-router-dom'
 import CrudEventos from '../fluxoadm/CrudEventos/crudeventos';
 import CrudOps from '../Crudopts/Crudopts';
+import CrudImprensa from '../fluxoadm/CrudImprensa/crudimprensa';
+
+
 
 const IndexAdm = (props) => {
 
-    const {crudOpt} = useParams()
+    const {crudOpt} = useParams() 
 
     function RenderComp (){
         if (crudOpt === undefined){
             return <CrudOps />
         } else if (crudOpt === "eventos"){
-            return <CrudEventos eventos={props}/>
+            return <CrudEventos eventos={props.eventos}/>
+        } else if (crudOpt === "imprensa"){
+            return <CrudImprensa imprensa={props.Imprensa} />
         }
     }
 

@@ -1,11 +1,11 @@
 import React from 'react';
-import './crudeventos.css'
+import './../crudpadrao.css'
 import { AiFillDelete, AiFillEdit } from "react-icons/ai";
 import { IoCreateSharp } from 'react-icons/io5'
 
 const CrudEventos = (props) => {
 
-    const Rotaeventos = props.eventos.eventos //desestruração da prop
+    const Rotaeventos = props.eventos //desestruração da prop
    
     return (
         <section className='Crud-Eventos-comp'>
@@ -37,7 +37,7 @@ const CrudEventos = (props) => {
                     {
                         Rotaeventos.map(element => {
                             return (
-                                <div className='item-lista'>
+                                <div className='item-lista' key={element.id}>
                                     <div className='campo-lista'>
                                         {element.nome}
                                     </div>

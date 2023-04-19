@@ -17,7 +17,7 @@ const Rotas = () => {
     //logica de implementação da api e distribuição para rotas (metodo get)
 
     const [DadosEventos, setDados] = useState([]) //state para setar os dados
-
+    const [DadosImprensario,setImprensario] = useState([])
 
     useEffect(() => {
         //Gets aqui 
@@ -25,7 +25,11 @@ const Rotas = () => {
             setDados(Response.data)  //response.data entra na variavel de estado Dados
         })
 
+        Api.get('imprensarios').then(Response => {
+            setImprensario(Response.data)  //response.data entra na variavel de estado Dados
+        })
     }, [])
+
 
     //Dados é passado como parametro para rotas (a api estará em dados)
     return (
@@ -44,7 +48,12 @@ const Rotas = () => {
 
 
                     { /* Adm rotas */ }
-                    <Route exact path='/indexadm' element={<IndexAdm eventos={DadosEventos} />}>
+                    <Route exact path='/indexadm' element={
+                    <IndexAdm 
+                        eventos={DadosEventos} 
+                        Imprensa={DadosImprensario}
+                
+                    />}>
                         <Route exact path=':crudOpt' element={<IndexAdm />} />
                     </Route>
 
