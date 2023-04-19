@@ -22,7 +22,7 @@ const CrudOps = () => {
             </div>
             <div className='crud-subcontainer'>
 
-                <Link className='box-opt'>
+                <Link className='box-opt'  to="/indexadm/adms">
                     <h2>Administradores</h2>
                 </Link>
 

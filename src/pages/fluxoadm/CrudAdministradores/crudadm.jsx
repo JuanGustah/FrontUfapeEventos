@@ -3,15 +3,15 @@ import './../crudpadrao.css'
 import { AiFillDelete, AiFillEdit } from "react-icons/ai";
 import { IoCreateSharp } from 'react-icons/io5'
 
-const CrudImprensa = (props) => {
+const CrudAdm = (props) => {
 
-    const Rotaimprensarios = props.imprensa //desestruração da prop
+    const RotaAdm = props.Adms
 
     return (
         <section className='Crud-Eventos-comp'>
             <div className='Tittle-crud-eventos'>
                 <div className='Tittle-crud-eventos-subcontainer'>
-                    <h1>Imprensarios</h1>
+                    <h1>Administradores</h1>
                 </div>
                 <div className='Icon-criar-box'>
                     <IoCreateSharp className='icon' />
@@ -20,7 +20,7 @@ const CrudImprensa = (props) => {
             <div className='lista-box'>
                 <div className='header-lista'>
                     <div className='campo-lista-header'>
-                        Nome Imprensario
+                        Nome Administrador
                     </div>
                     <div className='campo-lista-header'>
                         edit / excluir
@@ -30,7 +30,8 @@ const CrudImprensa = (props) => {
                 <div className='lista-box-subcontainer'>
 
                     {
-                        Rotaimprensarios.map(element => {
+                        RotaAdm.map(element => {
+
                             return (
                                 <>
                                     <div className='item-lista' key={""}>
@@ -55,5 +56,4 @@ const CrudImprensa = (props) => {
     );
 }
 
-
-export default CrudImprensa;
+export default CrudAdm;

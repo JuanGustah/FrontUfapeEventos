@@ -18,6 +18,7 @@ const Rotas = () => {
 
     const [DadosEventos, setDados] = useState([]) //state para setar os dados
     const [DadosImprensario,setImprensario] = useState([])
+    const [DadosAdms,setAdms] = useState([])
 
     useEffect(() => {
         //Gets aqui 
@@ -27,6 +28,10 @@ const Rotas = () => {
 
         Api.get('imprensarios').then(Response => {
             setImprensario(Response.data)  //response.data entra na variavel de estado Dados
+        })
+
+        Api.get('administradores').then(Response => {
+            setAdms(Response.data)  //response.data entra na variavel de estado Dados
         })
     }, [])
 
@@ -52,7 +57,7 @@ const Rotas = () => {
                     <IndexAdm 
                         eventos={DadosEventos} 
                         Imprensa={DadosImprensario}
-                
+                        Adms={DadosAdms}
                     />}>
                         <Route exact path=':crudOpt' element={<IndexAdm />} />
                     </Route>
