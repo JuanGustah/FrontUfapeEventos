@@ -19,11 +19,11 @@ const Rotas = () => {
     const [Dados, setDados] = useState([]) //state para setar os dados
 
 
-    useEffect(() => {
-        Api.get('Dados').then(Response => {
-            setDados(Response.data)  //response.data entra na variavel de estado Dados
-        })
-    }, [])
+    // useEffect(() => {
+    //     Api.get('Dados').then(Response => {
+    //         setDados(Response.data)  //response.data entra na variavel de estado Dados
+    //     })
+    // }, [])
 
 
     //Dados é passado como parametro para rotas (a api estará em dados)
