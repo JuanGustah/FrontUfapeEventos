@@ -1,0 +1,30 @@
+.alert-container{
+    width:100%;
+    margin-top:1vw;
+}
+.alert-container .container{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    margin: 15px 0px 15px 0px;
+}
+.alert-container .container h3{
+    margin: 15px 0px;
+}
+.alert-container .container p{
+    color:grey;
+    margin-bottom:15px;
+}
+.alert-container .cancelar{
+    display:flex;
+    justify-content:end;
+    margin-right: 15px
+}
+.alert-container .confirmar{
+    width:100%;
+    padding:15px 20px;
+    border:none;
+    color:white;
+    background-color:#e72f2f;
+    cursor:pointer;
+}
