@@ -25,7 +25,7 @@ const CrudEventos = (props) => {
                     <div className='campo-lista-header '>
                         Endereço
                     </div>
-                    <div className='campo-lista-header dataspacing'>
+                    <div className='campo-lista-header tittle-data-spacing'>
                         Data
                     </div>
                     <div className='campo-lista-header'>
