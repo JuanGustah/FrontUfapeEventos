@@ -63,7 +63,8 @@ const Rotas = () => {
                         Adms={DadosAdms}
                         AgenciaImprensa={DadosAgenciaImprensa}
                     />}>
-                        <Route exact path=':crudOpt' element={<IndexAdm />} />
+                        <Route path=':crudOpt' element={<IndexAdm />} />
+                        {/* <Route exact path=':crudOpt/:subCrudOption' element={<IndexAdm />} />   */}
                     </Route>
 
                 </Routes>

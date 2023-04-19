@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import './../crudpadrao.css'
 import { AiFillDelete, AiFillEdit } from "react-icons/ai";
-import { IoCreateSharp } from 'react-icons/io5'
+import { IoAddCircle } from 'react-icons/io5'
 import Api from '../../../services/api';
 import decoder from '../../../services/decoder';
+import { useNavigate } from 'react-router-dom';
 
 const CrudEventos = (props) => {
     let [Rotaeventos,setRotaeventos]=useState([]);
+    const navigate=useNavigate();
 
     useEffect(() => {
         //Gets aqui 
@@ -24,11 +26,9 @@ const CrudEventos = (props) => {
     return (
         <section className='Crud-Eventos-comp'>
             <div className='Tittle-crud-eventos'>
-                <div className='Tittle-crud-eventos-subcontainer'>
-                    <h1>Eventos</h1>
-                </div>
-                <div className='Icon-criar-box'>
-                    <IoCreateSharp className='icon' />
+                <h1>Eventos</h1>
+                <div className='Icon-criar-box' onClick={()=>{navigate('/indexadm/adicionareventos')}}>
+                    <IoAddCircle className='icon' title="Criar Evento" size={20}/>
                 </div>
             </div>
             <div className='lista-box'>

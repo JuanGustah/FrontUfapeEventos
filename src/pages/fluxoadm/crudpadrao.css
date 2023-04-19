@@ -1,20 +1,19 @@
 .Crud-Eventos-comp{
-    height: 55vh;
     display: flex;
     align-items: center;
     flex-direction: column;
     justify-content: center;
+    margin-top:2vw;
 }
 .Tittle-crud-eventos{
     flex: 2;
-    width: 90%;
+    width:78%;
     display: flex;
     align-items: center;
-    justify-content: center;
-    flex-direction: column;
-   
+    justify-content: space-between;
+    margin-bottom:2vw;
 }
-.lista-box{
+.Crud-Eventos-comp .lista-box{
     flex: 5;
     width: 80%;
     display: flex;

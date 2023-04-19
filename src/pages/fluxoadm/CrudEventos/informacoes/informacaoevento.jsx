@@ -7,7 +7,6 @@ import './styles.css';
 const InformacoesEvento= (props) => {
     const DetalhesEvento = props.evento;
     const fecharModalCallback = props.fecharModalCallback;
-    console.log(fecharModalCallback);
     async function comprarIngresso(){
         let idUsuario = decoder(sessionStorage.getItem('token')).id;
 
@@ -16,12 +15,11 @@ const InformacoesEvento= (props) => {
             preco:DetalhesEvento.ingressoCliente.preco
         }
         try{
-            let resposta = Api.post(`pedidos/${DetalhesEvento.id}/${idUsuario}`,data,{
+            let resposta = await Api.post(`pedidos/${DetalhesEvento.id}/${idUsuario}`,data,{
                 headers:{
                     Authorization: `Bearer ${sessionStorage.getItem('token')}`
                 }
             })
-            console.log(resposta);
             fecharModalCallback();
             alert("Ingresso Comprado com sucesso");
         }catch(erro){
