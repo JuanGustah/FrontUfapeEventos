@@ -6,6 +6,7 @@ import CrudEventos from '../fluxoadm/CrudEventos/crudeventos';
 import CrudOps from '../Crudopts/Crudopts';
 import CrudImprensa from '../fluxoadm/CrudImprensa/crudimprensa';
 import CrudAdm from '../fluxoadm/CrudAdministradores/crudadm';
+import CrudAgenciaImprensa from '../fluxoadm/CrudAgenciaImprensa/CrudAgenciaImprensa';
 
 
 
@@ -22,6 +23,8 @@ const IndexAdm = (props) => {
             return <CrudImprensa imprensa={props.Imprensa} />
         } else if (crudOpt === "adms"){
             return <CrudAdm Adms={props.Adms} /> 
+        }else if (crudOpt === "agenciaImprensa"){
+            return <CrudAgenciaImprensa AgenciaImprensa={props.AgenciaImprensa} /> 
         }
     }
 

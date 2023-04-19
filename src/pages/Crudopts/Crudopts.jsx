@@ -11,7 +11,7 @@ const CrudOps = () => {
                     <h2>Eventos</h2>
                 </Link>
 
-                <Link className='box-opt' to="">
+                <Link className='box-opt' to="/indexadm/agenciaImprensa">
                     <h2>Agencia Imprensa</h2>
                 </Link>
 

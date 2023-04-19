@@ -19,6 +19,7 @@ const Rotas = () => {
     const [DadosEventos, setDados] = useState([]) //state para setar os dados
     const [DadosImprensario,setImprensario] = useState([])
     const [DadosAdms,setAdms] = useState([])
+    const [DadosAgenciaImprensa,setAgenciaImprensa] = useState([])
 
     useEffect(() => {
         //Gets aqui 
@@ -33,9 +34,12 @@ const Rotas = () => {
         Api.get('administradores').then(Response => {
             setAdms(Response.data)  //response.data entra na variavel de estado Dados
         })
+        Api.get('agenciaImprensa').then(Response => {
+            setAgenciaImprensa(Response.data)  //response.data entra na variavel de estado Dados
+        })
     }, [])
 
-
+    
     //Dados é passado como parametro para rotas (a api estará em dados)
     return (
         <>
@@ -58,6 +62,7 @@ const Rotas = () => {
                         eventos={DadosEventos} 
                         Imprensa={DadosImprensario}
                         Adms={DadosAdms}
+                        AgenciaImprensa={DadosAgenciaImprensa}
                     />}>
                         <Route exact path=':crudOpt' element={<IndexAdm />} />
                     </Route>
