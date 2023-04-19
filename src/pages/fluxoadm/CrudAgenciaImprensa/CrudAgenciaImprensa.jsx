@@ -107,7 +107,6 @@ const CrudAgenciaImprensa = (props) => {
                                             {element.nome}
                                         </div>
                                         <div className='campo-lista'>
-                                            {/**Colocar um select aqui para todos os imprensarios */}
                                             {element.imprensarios.length}
                                         </div>
                                         <div className='campo-lista editar-excluir'>
