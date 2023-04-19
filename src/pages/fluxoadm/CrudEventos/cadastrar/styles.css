@@ -1,0 +1,18 @@
+.cadastro-evento-container{
+    max-width:992px;
+    margin:4vw auto;
+    padding-bottom:0.5vw;
+}
+.cadastro-evento-container .area-cadastro{
+    margin:35px 0px 30px 0px;
+    display:flex;
+    justify-content:end;
+}
+.cadastro-evento-container .area-cadastro button{
+    padding:15px 15px;
+    cursor:pointer;
+    background:#93823f;
+    border:none;
+    color:white;
+    border-radius:25px;
+}

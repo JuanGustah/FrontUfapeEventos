@@ -8,6 +8,7 @@ import CrudImprensa from '../fluxoadm/CrudImprensa/crudimprensa';
 import CrudAdm from '../fluxoadm/CrudAdministradores/crudadm';
 import CrudAgenciaImprensa from '../fluxoadm/CrudAgenciaImprensa/CrudAgenciaImprensa';
 import decoder from '../../services/decoder';
+import CadastroEvento from '../fluxoadm/CrudEventos/cadastrar/cadastrarevento';
 
 const IndexAdm = (props) => {
     const {crudOpt} = useParams();
@@ -20,7 +21,9 @@ const IndexAdm = (props) => {
             return <CrudOps />
         } else if (crudOpt === "eventos"){
             return <CrudEventos eventos={props.eventos}/>
-        } else if (crudOpt === "imprensa"){
+        }else if(crudOpt === "adicionareventos") 
+            return <CadastroEvento/>
+        else if (crudOpt === "imprensa"){
             return <CrudImprensa imprensa={props.Imprensa} />
         } else if (crudOpt === "adms"){
             return <CrudAdm Adms={props.Adms} /> 
