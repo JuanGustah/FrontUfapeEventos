@@ -16,7 +16,7 @@ const HomePage = () => {
                         <h1>Entrar</h1> 
                     </div>
                     <div className='container-form-geral'>
-                        <form action="" className='form-login' method='post'>
+                        <form action="http://localhost:8081/login" className='form-login' method='post'>
                             <input className='input-form' type="text" name="" id="" placeholder='Login'/>
                             <input className='input-form' type="password" name="" id="" placeholder='Senha'/>
 

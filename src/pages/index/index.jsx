@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom'
 import CrudEventos from '../fluxoadm/CrudEventos/crudeventos';
 import CrudOps from '../Crudopts/Crudopts';
 
-const IndexAdm = () => {
+const IndexAdm = (props) => {
 
     const {crudOpt} = useParams()
 
@@ -13,7 +13,7 @@ const IndexAdm = () => {
         if (crudOpt === undefined){
             return <CrudOps />
         } else if (crudOpt === "eventos"){
-            return <CrudEventos/>
+            return <CrudEventos eventos={props}/>
         }
     }
 

@@ -1,0 +1,103 @@
+.Crud-Eventos-comp{
+    height: 55vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+.Tittle-crud-eventos{
+    flex: 2;
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+   
+}
+.lista-box{
+    flex: 5;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.header-lista{
+    flex: 1;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-evenly;
+    width: 100%; 
+}
+.campo-lista-header{
+    flex: 1;
+    height: max-content;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 12px 0 12px 20px;
+    background-color: black;
+    color: white;
+    border: 2px solid black;
+}
+.lista-box-subcontainer{
+    flex: 3;
+    width: 100%;
+    height: 40vh;
+    overflow-y: auto;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    border: 1px solid rgba(0, 0, 0, 0.541);
+}
+.lista-box-subcontainer::-webkit-scrollbar{
+    display: none;
+}
+.campo-lista{
+    flex: 1;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.363);
+    height: max-content;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 23px 0 23px 20px;
+}
+.editar-excluir{
+    justify-content: center;
+    padding: 16px 0 16px 20px;
+}
+.item-lista{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: 14px;
+    
+}
+
+.dataspacing{
+    justify-content: flex-end;
+    padding-right: 30px;
+}
+.icon{
+    margin: 0 15px 0 0;
+    font-size: 20px;
+    border: 1px solid;
+    border-radius: 50%;
+    padding: 4px;
+    opacity: 0.8;
+    cursor: pointer;
+}
+.icon:hover{
+    cursor: pointer;
+    opacity: 1;
+}
+.Icon-criar-box{
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
