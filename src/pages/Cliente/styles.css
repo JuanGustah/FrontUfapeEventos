@@ -1,0 +1,21 @@
+.container-cliente{
+    margin-left:10vw;
+    max-width:960px;
+    margin:0 auto;
+    margin-top:2rem;
+}
+.lista-box{
+    width:initial;
+}
+.botao-invisivel{
+    border:none;
+    background: transparent;
+    cursor:pointer;
+}
+.botao-invisivel svg{
+    width:3vw;
+}
+.botao-invisivel.inativo{
+    color:grey;
+    cursor:not-allowed;
+}

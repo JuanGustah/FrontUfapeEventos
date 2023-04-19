@@ -1,0 +1,44 @@
+.container{
+    margin-right:20px;
+    margin-left:20px;
+}
+.evento-linha{
+    display:flex;
+    margin-top:15px;
+}
+.evento-linha .coluna:first-child{
+    padding-left:0px;
+    padding-right:15px;
+}
+.evento-linha .coluna:last-child{
+    padding-left:15px;
+    padding-right:0px;
+}
+.evento-linha .coluna{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    padding-left:15px;
+    padding-right:15px;
+}
+
+.evento-linha .coluna input{
+    padding:5px 15px;
+}
+
+h4{
+    margin-top:25px;
+}
+
+.area-compra{
+    margin:35px 30px 15px 30px;
+}
+
+.area-compra button{
+    width:100%;
+    padding:15px 15px;
+    cursor:pointer;
+    background:#93823f;
+    border:none;
+    color:white;
+}

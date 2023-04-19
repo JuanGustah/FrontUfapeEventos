@@ -1,11 +1,25 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './../crudpadrao.css'
 import { AiFillDelete, AiFillEdit } from "react-icons/ai";
 import { IoCreateSharp } from 'react-icons/io5'
+import Api from '../../../services/api';
+import decoder from '../../../services/decoder';
 
 const CrudEventos = (props) => {
+    let [Rotaeventos,setRotaeventos]=useState([]);
 
-    const Rotaeventos = props.eventos //desestruração da prop
+    useEffect(() => {
+        //Gets aqui 
+        let idAdm=decoder(sessionStorage.getItem('token')).id;
+
+        Api.get(`administradores/${idAdm}`,{
+            headers:{
+                Authorization: `Bearer ${sessionStorage.getItem('token')}`
+            }
+        }).then(Response => {
+            setRotaeventos(Response.data.eventos)  //response.data entra na variavel de estado Dados
+        })
+    }, [])
    
     return (
         <section className='Crud-Eventos-comp'>
@@ -20,7 +34,7 @@ const CrudEventos = (props) => {
             <div className='lista-box'>
                 <div className='header-lista'>
                     <div className='campo-lista-header'>
-                        Nome evento
+                        Evento
                     </div>
                     <div className='campo-lista-header '>
                         Endereço
@@ -29,13 +43,13 @@ const CrudEventos = (props) => {
                         Data
                     </div>
                     <div className='campo-lista-header'>
-                        edit / excluir
+                        Ações
                     </div>
                 </div>
 
                 <div className='lista-box-subcontainer'>
                     {
-                        Rotaeventos.map(element => {
+                        Rotaeventos?.map(element => {
                             return (
                                 <div className='item-lista' key={element.id}>
                                     <div className='campo-lista'>
