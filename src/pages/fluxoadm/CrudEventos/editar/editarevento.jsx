@@ -28,11 +28,8 @@ const EditarEvento= (props) => {
     const navigate = useNavigate();
 
     useEffect(()=>{
-        console.log(state);
-        console.log(state.data);
-        console.log(dayjs(state.data,"DD/MM/YYYY"));
         setNome(state.nome);
-        setData(state.data);    
+        setData(dayjs(state.data,"DD/MM/YYYY").format('YYYY-MM-DD'));    
         setRua(state.endereco.rua);
         setCep(state.endereco.cep);
         setCidade(state.endereco.cidade);
@@ -46,12 +43,12 @@ const EditarEvento= (props) => {
         setPrecoIngressoImprensario(state.ingressoImprensario.preco)
     },[])
 
-    async function handleCriarEvento(evento){
+    async function handleEditarEvento(evento){
         evento.preventDefault();
 
         let dados={
             nome,
-            data: new Date(data).toLocaleDateString(),
+            data: dayjs(data).format("DD/MM/YYYY"),
             endereco:{
                 rua,
                 cidade,
@@ -73,25 +70,22 @@ const EditarEvento= (props) => {
             }
         }
 
-        try{
-            let idUsuario = decoder(sessionStorage.getItem('token')).id;
-
-            let resposta = await Api.post(`eventos/${idUsuario}`,dados,{
-                headers:{
-                    Authorization: `Bearer ${sessionStorage.getItem('token')}`
-                }
-            });
-            alert("Evento criado com sucesso");
-            navigate('/indexadm/eventos');
-        }catch(e){
-            alert("Não foi possível cadastrar evento.");
-        }
+        // try{
+        //     let resposta = await Api.patch(`eventos/${state.id}`,dados,{
+        //         headers:{
+        //             Authorization: `Bearer ${sessionStorage.getItem('token')}`
+        //         }
+        //     });
+        //     alert("Evento atualizado com sucesso.");
+        // }catch(e){
+        //     alert("Não foi possível cadastrar evento.");
+        // }
     }
 
     return(
         <div className="cadastro-evento-container">
-            <form className="container">
-                <h2>Editar Novo Evento</h2>
+            <form className="container" onSubmit={handleEditarEvento}>
+                <h2>Editar Evento</h2>
                 <div className="evento-linha">
                     <div className="coluna">
                         <label>Nome</label>
@@ -99,7 +93,7 @@ const EditarEvento= (props) => {
                     </div>
                     <div className="coluna">
                         <label>Data</label>
-                        <input type="date" value={dayjs(data,"DD/MM/YYYY").format('YYYY-MM-DD')} onChange={e=>setData(e.target.value)} />
+                        <input type="date" value={data} onChange={e=>setData(e.target.value)} />
                     </div>
                 </div>
                 <h4>Endereco</h4>

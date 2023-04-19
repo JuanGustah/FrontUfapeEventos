@@ -21,22 +21,22 @@ const customStyles = {
     },
 };
 
-const CrudAgenciaImprensa = (props) => {
+const CrudAgenciaEventos = (props) => {
 
-    const [agenciasImprensa,setAgenciasImprensa] = useState([]);
+    const [agenciasEventos,setAgenciasEventos] = useState([]);
     const [modalIsOpen, setIsOpen] = React.useState(false);
     let [agenciaAtual, setAgenciaAtual]=useState(undefined);
     const navigate=useNavigate();
 
     useEffect(() => {
-        Api.get(`agenciaImprensa`,{
+        Api.get(`agenciaEventos`,{
             headers:{
                 Authorization: `Bearer ${sessionStorage.getItem('token')}`
             }
         }).then(Response => {
-            setAgenciasImprensa(Response.data)  
+            setAgenciasEventos(Response.data)  
         })
-    }, [])
+    }, []);
 
     function openModal(agencia) {
         setAgenciaAtual(agencia);
@@ -47,7 +47,7 @@ const CrudAgenciaImprensa = (props) => {
         setAgenciaAtual(undefined);
         setIsOpen(false);
 
-        Api.delete(`agenciaImprensa/${agenciaAtual}`,{
+        Api.delete(`agenciaEventos/${agenciaAtual}`,{
             headers:{
                 Authorization: `Bearer ${sessionStorage.getItem('token')}`
             }
@@ -57,7 +57,7 @@ const CrudAgenciaImprensa = (props) => {
             return;
         })
         .then(()=>{
-            Api.get("agenciaImprensa",{
+            Api.get("agenciaEventos",{
                 headers:{
                     Authorization: `Bearer ${sessionStorage.getItem('token')}`
                 }
@@ -67,7 +67,7 @@ const CrudAgenciaImprensa = (props) => {
                 return;
             })
             .then(Response => {
-                setAgenciasImprensa(Response.data)  //response.data entra na variavel de estado Dados
+                setAgenciasEventos(Response.data)  //response.data entra na variavel de estado Dados
             })
         })
     }
@@ -76,10 +76,10 @@ const CrudAgenciaImprensa = (props) => {
         <section className='Crud-Eventos-comp'>
             <div className='Tittle-crud-eventos'>
                 <div className='Tittle-crud-eventos-subcontainer'>
-                    <h1>Agencia Imprensa</h1>
+                    <h1>Agências de Eventos</h1>
                 </div>
-                <div className='Icon-criar-box' onClick={()=>{navigate('/indexadm/adicionaragenciaimprensa')}}>
-                    <IoAddCircle className='icon' title="Cadastrar Agencia Imprensa" size={20}/>
+                <div className='Icon-criar-box' onClick={()=>{navigate('/indexadm/adicionaragenciaeventos')}}>
+                    <IoAddCircle className='icon' title="Cadastrar Agência de Eventos" size={20}/>
                 </div>
             </div>
             <div className='lista-box'>
@@ -88,7 +88,7 @@ const CrudAgenciaImprensa = (props) => {
                         Nome Agência 
                     </div>
                     <div className='campo-lista-header'>
-                        Imprensarios
+                        Administradores
                     </div>
                     <div className='campo-lista-header'>
                         Ações
@@ -98,7 +98,7 @@ const CrudAgenciaImprensa = (props) => {
                 <div className='lista-box-subcontainer'>
 
                     {
-                        agenciasImprensa.map(element => {
+                        agenciasEventos.map(element => {
 
                             return (
                                 <React.Fragment key={element.id}>
@@ -107,11 +107,10 @@ const CrudAgenciaImprensa = (props) => {
                                             {element.nome}
                                         </div>
                                         <div className='campo-lista'>
-                                            {/**Colocar um select aqui para todos os imprensarios */}
-                                            {element.imprensarios.length}
+                                            {element.administradores.length}
                                         </div>
                                         <div className='campo-lista editar-excluir'>
-                                            <AiFillEdit className='icon' onClick={()=>{navigate('editaragenciaimprensa',{state:element})}}/>
+                                            <AiFillEdit className='icon' onClick={()=>{navigate('editaragenciaeventos',{state:element})}}/>
                                             <AiFillDelete className='icon' onClick={()=>{openModal(element.id)}} />
                                         </div>
                                     </div>
@@ -119,9 +118,6 @@ const CrudAgenciaImprensa = (props) => {
                             )
                         })
                     }
-
-
-
                 </div>
             </div>
             <ReactModal
@@ -135,4 +131,4 @@ const CrudAgenciaImprensa = (props) => {
     );
 }
 
-export default CrudAgenciaImprensa;
+export default CrudAgenciaEventos;
