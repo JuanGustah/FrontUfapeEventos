@@ -6,17 +6,31 @@ import Api from '../../services/api';
 import decoder from '../../services/decoder';
 
 import {FiShoppingBag} from 'react-icons/fi';
+import ReactModal from 'react-modal';
 
 import './styles.css';
+import InformacoesEvento from '../fluxoadm/CrudEventos/informacoes/informacaoevento';
+
+const customStyles = {
+    overlay:{
+        background:"#0000009c"
+    },
+    content: {
+        right:"20%",
+        left:"20%"
+    },
+  };
 
 const ClienteDashboard = (props) => {
     let [nome,setNome] = useState('');
     let [eventos,setEventos] = useState([]);
+    const [modalIsOpen, setIsOpen] = React.useState(false);
+    const [eventoAtual,setEventoAtual]= useState(undefined);
+    const [informacoesUsuario,setInformacoesUsuario] = useState({});
     const navigate = useNavigate();
-    let informacoesUsuario={};
 
     useEffect(()=>{
-        informacoesUsuario=decoder(sessionStorage.getItem('token'));
+        setInformacoesUsuario(decoder(sessionStorage.getItem('token')));
         setNome(informacoesUsuario.name);
 
         Api.get('eventos',{
@@ -33,6 +47,27 @@ const ClienteDashboard = (props) => {
         navigate('/');
     }
 
+    function openModal(evento) {
+        setEventoAtual(evento);
+        setIsOpen(true);
+    }
+
+    function closeModal() {
+        setEventoAtual(undefined);
+        setIsOpen(false);
+
+        informacoesUsuario=decoder(sessionStorage.getItem('token'));
+        setNome(informacoesUsuario.name);
+
+        Api.get('eventos',{
+            headers:{
+                Authorization: `Bearer ${sessionStorage.getItem('token')}`
+            }
+        }).then(eventos=>{
+            setEventos(eventos.data);
+        });
+    }
+    
     return (
         <section className='index-adm-page'>
             <header className='header-index'>
@@ -51,6 +86,7 @@ const ClienteDashboard = (props) => {
                 </div>
             </header>
             <section className='container-cliente'>
+                
                 <div className='lista-box'>
                     <div className='header-lista'>
                         <div className='campo-lista-header'>
@@ -72,8 +108,8 @@ const ClienteDashboard = (props) => {
 
                     <div className='lista-box-subcontainer'>
                         {
-                            eventos.map(evento=>{
-                                let participando = evento.pedidos.some(pedido=>pedido.id===informacoesUsuario.id);
+                            eventos.map((evento,index)=>{
+                                let participando = evento.pedidos.find(pedido=>pedido.usuario.id==informacoesUsuario.id);
                                 return(
                                     <div className='item-lista' key={evento.id}>
                                         <div className='campo-lista'>
@@ -92,6 +128,8 @@ const ClienteDashboard = (props) => {
                                             <button 
                                                 className={`botao-invisivel ${participando?"inativo":""}`}
                                                 type="button"
+                                                onClick={(()=>{openModal(index)})}
+                                                disabled={participando}
                                                 >
                                                     <FiShoppingBag size={25}/>
                                             </button>
@@ -103,6 +141,13 @@ const ClienteDashboard = (props) => {
                     </div>
                 </div>
             </section>
+            <ReactModal 
+            isOpen={modalIsOpen}
+            onRequestClose={closeModal}
+            style={customStyles}
+            >
+                <InformacoesEvento evento={eventos[eventoAtual]} fecharModalCallback={closeModal}/>
+            </ReactModal>
         </section>
     );
 }

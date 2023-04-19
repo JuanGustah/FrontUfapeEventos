@@ -54,7 +54,7 @@
     justify-content: flex-start;
     width: 50%;
     height: 70%;
-    background-color: #121212;
+    background-color: black;
     box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.25);
     border-radius: 5px;
 }

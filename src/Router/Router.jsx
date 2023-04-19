@@ -11,6 +11,7 @@ import Cadastrar from '../pages/Cadastrar/cadastrar';
 import MoreInfos from '../pages/MoreInfos/moreinfos';
 import IndexAdm from '../pages/index';
 import ClienteDashboard from '../pages/Cliente';
+import CadastroEvento from '../pages/fluxoadm/CrudEventos/cadastrar/cadastrarevento';
 
 const Rotas = () => {
     //logica de implementação da api e distribuição para rotas (metodo get)
@@ -20,23 +21,23 @@ const Rotas = () => {
     const [DadosAdms,setAdms] = useState([])
     const [DadosAgenciaImprensa,setAgenciaImprensa] = useState([])
 
-    useEffect(() => {
-        //Gets aqui 
-        Api.get('eventos').then(Response => {
-            setDados(Response.data)  //response.data entra na variavel de estado Dados
-        })
+    // useEffect(() => {
+    //     //Gets aqui 
+    //     Api.get('eventos').then(Response => {
+    //         setDados(Response.data)  //response.data entra na variavel de estado Dados
+    //     })
 
-        Api.get('imprensarios').then(Response => {
-            setImprensario(Response.data)  //response.data entra na variavel de estado Dados
-        })
+    //     Api.get('imprensarios').then(Response => {
+    //         setImprensario(Response.data)  //response.data entra na variavel de estado Dados
+    //     })
 
-        Api.get('administradores').then(Response => {
-            setAdms(Response.data)  //response.data entra na variavel de estado Dados
-        })
-        Api.get('agenciaImprensa').then(Response => {
-            setAgenciaImprensa(Response.data)  //response.data entra na variavel de estado Dados
-        })
-    }, [])
+    //     Api.get('administradores').then(Response => {
+    //         setAdms(Response.data)  //response.data entra na variavel de estado Dados
+    //     })
+    //     Api.get('agenciaImprensa').then(Response => {
+    //         setAgenciaImprensa(Response.data)  //response.data entra na variavel de estado Dados
+    //     })
+    // }, [])
 
     
     //Dados é passado como parametro para rotas (a api estará em dados)
@@ -53,7 +54,6 @@ const Rotas = () => {
 
                     { /* Usuario normal */ }
                     <Route exact path='/indexuser' element={<ClienteDashboard/>} />
-
 
                     { /* Adm rotas */ }
                     <Route exact path='/indexadm' element={

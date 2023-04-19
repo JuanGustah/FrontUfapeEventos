@@ -1,18 +1,19 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import "./index.css"
 import logo from "./../../images/logo.svg"
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import CrudEventos from '../fluxoadm/CrudEventos/crudeventos';
 import CrudOps from '../Crudopts/Crudopts';
 import CrudImprensa from '../fluxoadm/CrudImprensa/crudimprensa';
 import CrudAdm from '../fluxoadm/CrudAdministradores/crudadm';
 import CrudAgenciaImprensa from '../fluxoadm/CrudAgenciaImprensa/CrudAgenciaImprensa';
-
-
+import decoder from '../../services/decoder';
 
 const IndexAdm = (props) => {
-
-    const {crudOpt} = useParams() 
+    const {crudOpt} = useParams();
+    let [nome,setNome] = useState('');
+    const [informacoesUsuario,setInformacoesUsuario] = useState({});
+    const navigate = useNavigate();
 
     function RenderComp (){
         if (crudOpt === undefined){
@@ -28,6 +29,16 @@ const IndexAdm = (props) => {
         }
     }
 
+    useEffect(()=>{
+        setInformacoesUsuario(decoder(sessionStorage.getItem('token')));
+        setNome(informacoesUsuario.name);
+    },[])
+
+    function logout(){
+        sessionStorage.clear();
+        navigate('/');
+    }
+
     return (
         <section className='index-adm-page'>
             <header className='header-index'>
@@ -38,10 +49,10 @@ const IndexAdm = (props) => {
                 </div>
                 <div className='opts-user'>
                     <div className='name-container'>
-                        Bem vindo, [User]
+                        {nome}
                     </div>
                     <div className='sair-container'>
-                        <button className='sair-button'>Sair</button>
+                        <button className='sair-button' onClick={logout}>Sair</button>
                     </div>
                 </div>
             </header>
