@@ -7,6 +7,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ReactModal from 'react-modal';
 import Alert from '../../../components/alert/Alert';
+import decoder from '../../../services/decoder';
 
 const customStyles = {
     overlay:{
@@ -26,14 +27,18 @@ const CrudAgenciaEventos = (props) => {
     const [agenciasEventos,setAgenciasEventos] = useState([]);
     const [modalIsOpen, setIsOpen] = React.useState(false);
     let [agenciaAtual, setAgenciaAtual]=useState(undefined);
+    const [informacoesUsuario,setInformacoesUsuario] = useState({});
     const navigate=useNavigate();
 
     useEffect(() => {
+        setInformacoesUsuario(decoder(sessionStorage.getItem('token')));
+
         Api.get(`agenciaEventos`,{
             headers:{
                 Authorization: `Bearer ${sessionStorage.getItem('token')}`
             }
         }).then(Response => {
+            console.log(Response);
             setAgenciasEventos(Response.data)  
         })
     }, []);
@@ -99,7 +104,7 @@ const CrudAgenciaEventos = (props) => {
 
                     {
                         agenciasEventos.map(element => {
-
+                            let propriaAgencia = element.administradores.some(adm=>adm.id==informacoesUsuario.id);
                             return (
                                 <React.Fragment key={element.id}>
                                     <div className='item-lista' >
@@ -111,7 +116,7 @@ const CrudAgenciaEventos = (props) => {
                                         </div>
                                         <div className='campo-lista editar-excluir'>
                                             <AiFillEdit className='icon' onClick={()=>{navigate('editaragenciaeventos',{state:element})}}/>
-                                            <AiFillDelete className='icon' onClick={()=>{openModal(element.id)}} />
+                                            <AiFillDelete className='icon' onClick={()=>{openModal(element.id)}} style={propriaAgencia?{pointerEvents:'none',cursor:'not-allowed',opacity:'40%'}:{}}/>
                                         </div>
                                     </div>
                                 </React.Fragment>
