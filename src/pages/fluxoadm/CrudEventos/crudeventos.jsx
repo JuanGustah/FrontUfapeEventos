@@ -5,10 +5,63 @@ import { IoAddCircle } from 'react-icons/io5'
 import Api from '../../../services/api';
 import decoder from '../../../services/decoder';
 import { useNavigate } from 'react-router-dom';
+import ReactModal from 'react-modal';
+import Alert from '../../../components/alert/Alert';
+
+const customStyles = {
+    overlay:{
+        background:"#0000009c"
+    },
+    content: {
+        right:"30%",
+        left:"30%",
+        top:"20%",
+        bottom:"37.8%",
+        padding:"0px"
+    },
+  };
 
 const CrudEventos = (props) => {
     let [Rotaeventos,setRotaeventos]=useState([]);
+    const [modalIsOpen, setIsOpen] = React.useState(false);
+    let [eventoAtual, setEventoAtual]=useState(undefined);
     const navigate=useNavigate();
+
+    function openModal(evento) {
+        setEventoAtual(evento);
+        setIsOpen(true);
+    }
+
+    function closeModal() {
+        setEventoAtual(undefined);
+        setIsOpen(false);
+
+        let idAdm=decoder(sessionStorage.getItem('token')).id;
+
+        Api.delete(`eventos/${eventoAtual}`,{
+            headers:{
+                Authorization: `Bearer ${sessionStorage.getItem('token')}`
+            }
+        })
+        .catch(e=>{
+            alert("Não foi possível apagar evento.");
+            return;
+        })
+        .then(()=>{
+            Api.get(`administradores/${idAdm}`,{
+                headers:{
+                    Authorization: `Bearer ${sessionStorage.getItem('token')}`
+                }
+            })
+            .catch(e=>{
+                alert("Não foi possível listar eventos.");
+                return;
+            })
+            .then(Response => {
+                setRotaeventos(Response.data.eventos)  //response.data entra na variavel de estado Dados
+            })
+        })
+    }
 
     useEffect(() => {
         //Gets aqui 
@@ -22,6 +75,7 @@ const CrudEventos = (props) => {
             setRotaeventos(Response.data.eventos)  //response.data entra na variavel de estado Dados
         })
     }, [])
+
    
     return (
         <section className='Crud-Eventos-comp'>
@@ -62,8 +116,8 @@ const CrudEventos = (props) => {
                                         {element.data}
                                     </div>
                                     <div className='campo-lista editar-excluir'>
-                                        <AiFillEdit className='icon' />
-                                        <AiFillDelete className='icon' />
+                                        <AiFillEdit className='icon' onClick={()=>{navigate('editarevento',{state:element})}} />
+                                        <AiFillDelete onClick={()=>{openModal(element.id)}} className='icon' />
                                     </div>
                                 </div>
                             )
@@ -71,6 +125,13 @@ const CrudEventos = (props) => {
                     }
                 </div>
             </div>
+            <ReactModal 
+            isOpen={modalIsOpen}
+            onRequestClose={closeModal}
+            style={customStyles}
+            >
+                <Alert fecharModalCallback={closeModal}/>
+            </ReactModal>
         </section>
     );
 }
