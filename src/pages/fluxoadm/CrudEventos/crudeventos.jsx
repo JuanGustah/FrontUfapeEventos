@@ -19,7 +19,7 @@ const customStyles = {
         bottom:"37.8%",
         padding:"0px"
     },
-  };
+};
 
 const CrudEventos = (props) => {
     let [Rotaeventos,setRotaeventos]=useState([]);

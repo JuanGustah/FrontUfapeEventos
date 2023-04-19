@@ -10,6 +10,11 @@ import CrudAgenciaImprensa from '../fluxoadm/CrudAgenciaImprensa/CrudAgenciaImpr
 import decoder from '../../services/decoder';
 import CadastroEvento from '../fluxoadm/CrudEventos/cadastrar/cadastrarevento';
 import EditarEvento from '../fluxoadm/CrudEventos/editar/editarevento';
+import CadastoAgenciaImprensa from '../fluxoadm/CrudAgenciaImprensa/cadastrar/cadastraragenciaimprensa';
+import EditarAgenciaImprensa from '../fluxoadm/CrudAgenciaImprensa/editar/editarAgenciaImprensa';
+import CrudAgenciaEventos from '../fluxoadm/crudAgenciaEventos/CrudAgenciaEventos';
+import CadastoAgenciaEventos from '../fluxoadm/crudAgenciaEventos/cadastrar/cadastraragenciaeventos';
+import EditarAgenciaEventos from '../fluxoadm/crudAgenciaEventos/editar/editaragenciaeventos';
 
 const IndexAdm = (props) => {
     const {crudOpt} = useParams();
@@ -24,16 +29,24 @@ const IndexAdm = (props) => {
             return <CrudEventos eventos={props.eventos}/>
         }else if(crudOpt === "adicionareventos") {
             return <CadastroEvento/>
-        }
-        else if(crudOpt === "editarevento"){
+        }else if(crudOpt === "editarevento"){
             return <EditarEvento/>
-        }
-        else if (crudOpt === "imprensa"){
+        }else if (crudOpt === "imprensa"){
             return <CrudImprensa imprensa={props.Imprensa} />
-        } else if (crudOpt === "adms"){
+        }else if (crudOpt === "adms"){
             return <CrudAdm Adms={props.Adms} /> 
         }else if (crudOpt === "agenciaImprensa"){
             return <CrudAgenciaImprensa AgenciaImprensa={props.AgenciaImprensa} /> 
+        }else if(crudOpt === "adicionaragenciaimprensa"){
+            return <CadastoAgenciaImprensa/>
+        }else if(crudOpt === "editaragenciaimprensa"){
+            return <EditarAgenciaImprensa/>
+        }else if (crudOpt === "agenciaeventos"){
+            return <CrudAgenciaEventos/> 
+        }else if (crudOpt === "adicionaragenciaeventos"){
+            return <CadastoAgenciaEventos/> 
+        }else if (crudOpt === "editaragenciaeventos"){
+            return <EditarAgenciaEventos/> 
         }
     }
 
