@@ -2,14 +2,19 @@ import React, { useState } from 'react';
 import "./home.css"
 import {Link} from "react-router-dom"
 import Logo from "./../../images/logo.svg"
-import Api from '../../api/api';
+import Api from '../../services/api';
 import { useNavigate } from 'react-router-dom/dist';
+import decoder from '../../services/decoder';
 
 const HomePage = () => {
     //login e cadastro
     let [login,setLogin] = useState('');
     let [senha,setSenha] = useState('');
     const navigate = useNavigate();
+    let caminhosTipo={
+        "administrador":"/indexadm",
+        "cliente":"/indexuser",
+    }
 
     async function handleLogin(event){
         event.preventDefault();
@@ -22,9 +27,8 @@ const HomePage = () => {
         try{
             const resposta = await Api.post('login',data);
             sessionStorage.setItem('token', resposta.data);
-            console.log(resposta);
-            navigate('/indexuser');
-
+            let opcoes = decoder(resposta.data);
+            navigate(caminhosTipo[opcoes.type]);
         }catch(erro){
             alert("Informações incorretas.")
         }

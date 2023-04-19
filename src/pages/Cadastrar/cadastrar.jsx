@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {Link, useParams} from 'react-router-dom'
 import { useNavigate } from 'react-router-dom/dist';
-import Api from '../../api/api';
+import Api from '../../services/api';
 import './cadastrar.css'
 
 const Cadastrar = () => {
@@ -31,10 +31,8 @@ const Cadastrar = () => {
         try{
             const resposta = await Api.post('clientes',data);
             sessionStorage.setItem('token', resposta.data);
-            console.log(resposta);
-            navigate('/indexadm');
+            navigate('/indexuser');
         }catch(erro){
-            console.log(erro);
             alert("Informações incorretas.")
         }
     }
