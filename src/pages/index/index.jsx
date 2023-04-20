@@ -15,6 +15,8 @@ import EditarAgenciaImprensa from '../fluxoadm/CrudAgenciaImprensa/editar/editar
 import CrudAgenciaEventos from '../fluxoadm/crudAgenciaEventos/CrudAgenciaEventos';
 import CadastoAgenciaEventos from '../fluxoadm/crudAgenciaEventos/cadastrar/cadastraragenciaeventos';
 import EditarAgenciaEventos from '../fluxoadm/crudAgenciaEventos/editar/editaragenciaeventos';
+import CadastroAdm from '../fluxoadm/CrudAdministradores/cadastrar/cadastrarAdm';
+import EditarAdm from '../fluxoadm/CrudAdministradores/Editar/EditarAdm';
 
 const IndexAdm = (props) => {
     const {crudOpt} = useParams();
@@ -47,6 +49,10 @@ const IndexAdm = (props) => {
             return <CadastoAgenciaEventos/> 
         }else if (crudOpt === "editaragenciaeventos"){
             return <EditarAgenciaEventos/> 
+        }else if (crudOpt === "adicionaradm"){
+            return <CadastroAdm />
+        }else if (crudOpt === "editaradm"){
+            return <EditarAdm />
         }
     }
 

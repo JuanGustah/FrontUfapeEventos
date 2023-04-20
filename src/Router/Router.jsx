@@ -5,7 +5,6 @@ import {
     Route
 } from 'react-router-dom'
 
-import Api from '../services/api';
 import HomePage from '../pages/homepage/home';
 import Cadastrar from '../pages/Cadastrar/cadastrar';
 import MoreInfos from '../pages/MoreInfos/moreinfos';
@@ -15,11 +14,6 @@ import CadastroEvento from '../pages/fluxoadm/CrudEventos/cadastrar/cadastrareve
 
 const Rotas = () => {
     //logica de implementação da api e distribuição para rotas (metodo get)
-
-    const [DadosEventos, setDados] = useState([]) //state para setar os dados
-    const [DadosImprensario,setImprensario] = useState([])
-    const [DadosAdms,setAdms] = useState([])
-    const [DadosAgenciaImprensa,setAgenciaImprensa] = useState([])
 
     // useEffect(() => {
     //     //Gets aqui 
@@ -57,12 +51,7 @@ const Rotas = () => {
 
                     { /* Adm rotas */ }
                     <Route exact path='/indexadm' element={
-                    <IndexAdm 
-                        eventos={DadosEventos} 
-                        Imprensa={DadosImprensario}
-                        Adms={DadosAdms}
-                        AgenciaImprensa={DadosAgenciaImprensa}
-                    />}>
+                    <IndexAdm />}>
                         <Route path=':crudOpt' element={<IndexAdm />} />
                         {/* <Route exact path=':crudOpt/:subCrudOption' element={<IndexAdm />} />   */}
                     </Route>

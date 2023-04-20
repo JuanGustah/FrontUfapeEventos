@@ -26,6 +26,7 @@ const CrudAgenciaImprensa = (props) => {
     const [agenciasImprensa,setAgenciasImprensa] = useState([]);
     const [modalIsOpen, setIsOpen] = React.useState(false);
     let [agenciaAtual, setAgenciaAtual]=useState(undefined);
+
     const navigate=useNavigate();
 
     useEffect(() => {
@@ -72,6 +73,7 @@ const CrudAgenciaImprensa = (props) => {
         })
     }
 
+    
     return (
         <section className='Crud-Eventos-comp'>
             <div className='Tittle-crud-eventos'>

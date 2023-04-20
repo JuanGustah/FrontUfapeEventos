@@ -21,7 +21,7 @@ const customStyles = {
     },
 };
 
-const CrudEventos = (props) => {
+const CrudEventos = () => {
     let [Rotaeventos,setRotaeventos]=useState([]);
     const [modalIsOpen, setIsOpen] = React.useState(false);
     let [eventoAtual, setEventoAtual]=useState(undefined);
