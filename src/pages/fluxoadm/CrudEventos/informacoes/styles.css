@@ -22,8 +22,8 @@
     padding-right:15px;
 }
 
-.evento-linha .coluna input{
-    padding:5px 15px;
+.evento-linha .coluna input,select{
+    padding:5px 10px;
 }
 
 h4{

@@ -15,8 +15,13 @@ import EditarAgenciaImprensa from '../fluxoadm/CrudAgenciaImprensa/editar/editar
 import CrudAgenciaEventos from '../fluxoadm/crudAgenciaEventos/CrudAgenciaEventos';
 import CadastoAgenciaEventos from '../fluxoadm/crudAgenciaEventos/cadastrar/cadastraragenciaeventos';
 import EditarAgenciaEventos from '../fluxoadm/crudAgenciaEventos/editar/editaragenciaeventos';
+<<<<<<< HEAD
 import CadastroAdm from '../fluxoadm/CrudAdministradores/cadastrar/cadastrarAdm';
 import EditarAdm from '../fluxoadm/CrudAdministradores/Editar/EditarAdm';
+=======
+import CadastoImprensario from '../fluxoadm/CrudImprensa/cadastrar/cadastrarimprensario';
+import EditarImprensario from '../fluxoadm/CrudImprensa/editar/editarimprensario';
+>>>>>>> 303c02c57529a5beafcd8f305c051e10793250c8
 
 const IndexAdm = (props) => {
     const {crudOpt} = useParams();
@@ -33,8 +38,6 @@ const IndexAdm = (props) => {
             return <CadastroEvento/>
         }else if(crudOpt === "editarevento"){
             return <EditarEvento/>
-        }else if (crudOpt === "imprensa"){
-            return <CrudImprensa imprensa={props.Imprensa} />
         }else if (crudOpt === "adms"){
             return <CrudAdm Adms={props.Adms} /> 
         }else if (crudOpt === "agenciaImprensa"){
@@ -49,10 +52,19 @@ const IndexAdm = (props) => {
             return <CadastoAgenciaEventos/> 
         }else if (crudOpt === "editaragenciaeventos"){
             return <EditarAgenciaEventos/> 
+<<<<<<< HEAD
         }else if (crudOpt === "adicionaradm"){
             return <CadastroAdm />
         }else if (crudOpt === "editaradm"){
             return <EditarAdm />
+=======
+        }else if (crudOpt === "imprensa"){
+            return <CrudImprensa imprensa={props.Imprensa} />
+        }else if(crudOpt ==="adicionarimprensario"){
+            return <CadastoImprensario/>
+        }else if(crudOpt ==="editarimprensario"){
+            return <EditarImprensario/>
+>>>>>>> 303c02c57529a5beafcd8f305c051e10793250c8
         }
     }
 
