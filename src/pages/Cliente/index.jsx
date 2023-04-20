@@ -56,7 +56,7 @@ const ClienteDashboard = (props) => {
         setEventoAtual(undefined);
         setIsOpen(false);
 
-        informacoesUsuario=decoder(sessionStorage.getItem('token'));
+        setInformacoesUsuario(decoder(sessionStorage.getItem('token')));
         setNome(informacoesUsuario.name);
 
         Api.get('eventos',{
@@ -109,7 +109,7 @@ const ClienteDashboard = (props) => {
                     <div className='lista-box-subcontainer'>
                         {
                             eventos.map((evento,index)=>{
-                                let participando = evento.pedidos.find(pedido=>pedido.usuario.id==informacoesUsuario.id);
+                                let participando = evento.pedidos.find(pedido=>pedido?.usuario?.id==informacoesUsuario?.id || pedido == informacoesUsuario?.id);
                                 return(
                                     <div className='item-lista' key={evento.id}>
                                         <div className='campo-lista'>

@@ -65,6 +65,7 @@ const ImprensarioDashboard = (props) => {
                 Authorization: `Bearer ${sessionStorage.getItem('token')}`
             }
         }).then(eventos=>{
+            console.log(eventos);
             setEventos(eventos.data);
         });
     }
@@ -109,7 +110,8 @@ const ImprensarioDashboard = (props) => {
                     <div className='lista-box-subcontainer'>
                         {
                             eventos.map((evento,index)=>{
-                                let participando = evento.pedidos.find(pedido=>pedido.usuario.id==informacoesUsuario.id);
+                                evento.pedidos.forEach(e=>console.log(e));
+                                let participando = evento.pedidos.find(pedido=>pedido?.usuario?.id==informacoesUsuario?.id || pedido == informacoesUsuario?.id);
                                 return(
                                     <div className='item-lista' key={evento.id}>
                                         <div className='campo-lista'>

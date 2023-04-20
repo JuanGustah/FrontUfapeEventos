@@ -23,6 +23,7 @@ const InformacoesEvento= (props) => {
             fecharModalCallback();
             alert("Ingresso Comprado com sucesso");
         }catch(erro){
+            console.log(erro);
             alert("Não foi possível comprar esse ingresso.")
         }
         
