@@ -11,6 +11,7 @@ import MoreInfos from '../pages/MoreInfos/moreinfos';
 import IndexAdm from '../pages/index';
 import ClienteDashboard from '../pages/Cliente';
 import CadastroEvento from '../pages/fluxoadm/CrudEventos/cadastrar/cadastrarevento';
+import ImprensarioDashboard from '../pages/Imprensario';
 
 const Rotas = () => {
     //logica de implementação da api e distribuição para rotas (metodo get)
@@ -48,6 +49,9 @@ const Rotas = () => {
 
                     { /* Usuario normal */ }
                     <Route exact path='/indexuser' element={<ClienteDashboard/>} />
+
+                    { /* Imprensario */ }
+                    <Route exact path='/indeximprensario' element={<ImprensarioDashboard/>} />
 
                     { /* Adm rotas */ }
                     <Route exact path='/indexadm' element={

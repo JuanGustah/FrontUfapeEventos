@@ -5,7 +5,7 @@ import Dayjs from 'dayjs';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 
 import './styles.css';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { redirect, useLocation, useNavigate } from 'react-router-dom';
 
 const EditarEvento= (props) => {
     const {state} = useLocation();
@@ -70,16 +70,17 @@ const EditarEvento= (props) => {
             }
         }
 
-        // try{
-        //     let resposta = await Api.patch(`eventos/${state.id}`,dados,{
-        //         headers:{
-        //             Authorization: `Bearer ${sessionStorage.getItem('token')}`
-        //         }
-        //     });
-        //     alert("Evento atualizado com sucesso.");
-        // }catch(e){
-        //     alert("Não foi possível cadastrar evento.");
-        // }
+        try{
+            let resposta = await Api.patch(`eventos/${state.id}`,dados,{
+                headers:{
+                    Authorization: `Bearer ${sessionStorage.getItem('token')}`
+                }
+            });
+            alert("Evento atualizado com sucesso.");
+            navigate("eventos");
+        }catch(e){
+            alert("Não foi possível cadastrar evento.");
+        }
     }
 
     return(
@@ -161,7 +162,7 @@ const EditarEvento= (props) => {
                 </div>
 
                 <div className='area-cadastro'>
-                    <button type="submit">Cadastrar</button>
+                    <button type="submit">Editar</button>
                 </div>
             </form>
         </div>

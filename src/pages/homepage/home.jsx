@@ -14,6 +14,7 @@ const HomePage = () => {
     let caminhosTipo={
         "administrador":"/indexadm",
         "cliente":"/indexuser",
+        "imprensario":"indeximprensario"
     }
 
     async function handleLogin(event){
